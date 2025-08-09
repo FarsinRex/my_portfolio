@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 0%);
+  --muted: hsl(0, 0%, 96%);
+  --muted-foreground: hsl(0, 0%, 45%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(0, 0%, 0%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(0, 0%, 0%);
+  --border: hsl(0, 0%, 90%);
+  --input: hsl(0, 10%, 8%);
+  --primary: hsl(221, 83%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(0, 0%, 96%);
+  --secondary-foreground: hsl(0, 0%, 9%);
+  --accent: hsl(0, 0%, 96%);
+  --accent-foreground: hsl(0, 0%, 9%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 9%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(0, 0%, 5%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 4%);
+  --muted-foreground: hsl(0, 0%, 55%);
+  --popover: hsl(0, 0%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 15%);
+  --input: hsl(0, 0%, 15%);
+  --primary: hsl(221, 83%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(0, 0%, 10%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(0, 0%, 10%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 83%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sf antialiased bg-background text-foreground;
+  }
+}
+
+/* San Francisco Font */
+@font-face {
+  font-family: 'San Francisco';
+  font-weight: 100;
+  src: url('https://fonts.cdnfonts.com/s/90203/SFUIDisplay-Thin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  font-weight: 200;
+  src: url('https://fonts.cdnfonts.com/s/90203/SFUIDisplay-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  font-weight: 300;
+  src: url('https://fonts.cdnfonts.com/s/90203/SFUIDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  font-weight: 400;
+  src: url('https://fonts.cdnfonts.com/s/90203/SFUIDisplay-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  font-weight: 500;
+  src: url('https://fonts.cdnfonts.com/s/90203/SFUIDisplay-Semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'San Francisco';
+  font-weight: 600;
+  src: url('https://fonts.cdnfonts.com/s/90203/SFUIDisplay-Bold.woff2') format('woff2');
+}
+
+/* Grain animation */
+@keyframes grain-move {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-2px, -2px) rotate(1deg); }
+  50% { transform: translate(2px, 2px) rotate(-1deg); }
+  75% { transform: translate(-1px, 1px) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.grain-animation {
+  animation: grain-move 8s linear infinite;
+}
+
+/* Menu button animation */
+@keyframes menu-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(90deg); }
+}
+
+.menu-button-rotate {
+  animation: menu-rotate 0.3s ease-in-out forwards;
+}
+
+.menu-button-reverse {
+  animation: menu-rotate 0.3s ease-in-out reverse forwards;
+}
+
+/* Scroll indicator animation */
+@keyframes scroll-indicator {
+  0% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(5px) scaleY(1.2); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+.scroll-indicator {
+  animation: scroll-indicator 1.5s ease-in-out infinite;
+}
+
+/* Loading screen code animation */
+@keyframes code-appear {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.code-line {
+  animation: code-appear 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+/* Custom fonts */
+.font-sf {
+  font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-zinzin {
+  font-family: 'Creepster', cursive;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Project card hover effects */
+.project-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Section fade-in animation */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+.body.dark {
+  color: #ccc
+}
+.dark .your-component-class {
+  color: #e0e0e0
+}
