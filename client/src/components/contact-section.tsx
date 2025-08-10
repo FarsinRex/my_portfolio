@@ -8,11 +8,18 @@ import { Mail, Phone, Github, Linkedin} from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertContactSchema } from "@shared/schema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+
+// Define the contact form schema locally
+const insertContactSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  contact_number: z.string().min(1, "Contact number is required"),
+  message: z.string().min(1, "Message is required"),
+});
 
 type ContactFormData = z.infer<typeof insertContactSchema>;
 
